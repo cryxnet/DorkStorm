@@ -1,0 +1,11 @@
+# EditorConfig: https://EditorConfig.org
+
+root = true
+
+# Generic Unix-style config for all files
+[*]
+charset = utf-8
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+end_of_line = lf
