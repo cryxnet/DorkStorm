@@ -10,6 +10,7 @@ class Context:
                 "base_query_id": None,
                 "extra_query_params": {
                     "inurl": None,
+                    "intext": None,
                     "intitle": None,
                     "site": None,
                     "filetype": None,
@@ -22,7 +23,7 @@ class Context:
                     "weather": None,
                     "movie": None,
                     "map": None,
-                    "book": None,
+                    "book": None, 
                     "patent": None,
                     "phonebook": None,
                     "rphonebook": None,
@@ -31,11 +32,7 @@ class Context:
                     "country": None,
                     "language": None,
                     "daterange": None,
-                    "excluded_terms": None,
-                    "included_terms": None,
-                    "num_results": None,
-                    "search_type": None,
-                    "safe_search": None
+                    "extras": None
                 }
             }
         }
