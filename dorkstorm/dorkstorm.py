@@ -4,7 +4,7 @@ from core.db import Database
 from core.command import CommandHandler
 from core.context import Context
 from core.dork import DorkEngine
-from core.pentest import PenetrationTest
+from core.pentest import PentestEngine
 
 # === Settings === #
 init(autoreset=True) # colorama autoreset text color
@@ -17,7 +17,7 @@ db.create_table()
 dork_engine = DorkEngine()
 
 # === Penetration Testing Module === #
-penetration_test_engine = PenetrationTest()
+penetration_test_engine = PentestEngine()
 
 # === Context === #
 context = Context(database=db, dork_engine=dork_engine, penetration_test_engine=penetration_test_engine)
