@@ -3,6 +3,7 @@ temp/
 queries.db
 todo.md
 lab/
+reports/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
