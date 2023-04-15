@@ -3,7 +3,7 @@ import os
 import json
 import sqlite3
 import xml.etree.ElementTree as ET
-
+import datetime
 
 class Database:
     def __init__(self, db_file):
@@ -28,6 +28,12 @@ class Database:
         Fetch all last executed query results
         """
         return self.cur.fetchall()
+    
+    def fetchone(self):
+        """
+        Fetch last executed query result
+        """
+        return self.cur.fetchone()
 
     def close(self):
         """
@@ -72,17 +78,29 @@ class Database:
         if row:
             return dict(row)
         return None
+    
+    def get_max_id(self):
+        self.execute('SELECT MAX(id) FROM queries')
+        result = self.fetchone()
+        max_id = result[0] if result[0] is not None else 0
+
+        return max_id
 
     def insert_query(self, query):
         """
         Add a new query to the database
         """
+        values = (query.get('id', self.get_max_id() + 1), query.get('link', None),
+                  query['category'], query['short_description'], query['textual_description'],
+                  query['query'], query.get('query_string', None), query.get('edb', None),
+                  query.get('date', datetime.datetime.now().strftime('%Y-%m-%d')), query['author'])
+        
+        print("Inserting query with values:", values)
         self.execute('''INSERT INTO queries 
                  (id, link, category, short_description, textual_description, query, query_string, edb, date, author) 
                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
-                  (query['id'], query['link'], query['category'], query['short_description'],
-                   query['textual_description'], query['query'], query['query_string'],
-                   query['edb'], query['date'], query['author']))
+                  values)
+
         
     def has_data(self):
         """
@@ -129,7 +147,7 @@ class Database:
         queries = []
         for entry in root.findall('entry'):
             query = {}
-            query['id'] = entry.find('id').text
+            query['id'] = int(entry.find('id').text)
             query['link'] = entry.find('link').text
             query['category'] = entry.find('category').text
             query['short_description'] = entry.find('shortDescription').text

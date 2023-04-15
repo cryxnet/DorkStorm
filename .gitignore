@@ -4,6 +4,7 @@ queries.db
 todo.md
 lab/
 reports/
+queries.db-journal
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

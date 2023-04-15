@@ -1,5 +1,5 @@
 from core.utils import print_query_table, print_url_table, print_configs_table
-import os
+import os, datetime
 
 class CommandHandler():
     def __init__(self, context):
@@ -53,9 +53,11 @@ class CommandHandler():
             cmdValues = command.split(" ")
             key = cmdValues[1]
             
-            if key in self.context.query_params:
+            if key in self.context.query["configs"]["extra_query_params"]:
                 self.context.query["configs"]["extra_query_params"][key] = None
                 print(f"{key} is cleared")
+            else:
+                print(f"{key} does not exists")
                 
         elif command.startswith("get "):
             cmdValues = command.split(" ")
@@ -127,18 +129,16 @@ class CommandHandler():
             author = input("Enter your name as the author of this query: ")
             
             builded_query = self.context.dork_engine.build_query(self.context.query, param_only=True)
-            date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             
             query = {
                 'category': category,
                 'short_description': description,
                 'textual_description': textual_description,
                 'query': builded_query,
-                'date': date,
                 'author': author
             }
             
-            self.insert_query(query)
+            self.context.database.insert_query(query)
             
             print("[~] Added query to the database")
             
