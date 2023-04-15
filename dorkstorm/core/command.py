@@ -40,13 +40,14 @@ class CommandHandler():
         elif command.startswith("set "):
             cmdValues = command.split(" ")
             key = cmdValues[1]
-            value = cmdValues[2]
-            
+            value = command.replace(f"set {key} ", "")
+
             if key in self.context.query["configs"]["extra_query_params"]:
                 self.context.query["configs"]["extra_query_params"][key] = value
                 print(f"{key} set to {value}")
             else:
-                print("[ERROR] Not a valid query parameter: {key}")
+                print(f"[ERROR] Not a valid query parameter: {key}")
+
                 
         elif command.startswith("unset "):
             cmdValues = command.split(" ")
@@ -117,6 +118,30 @@ class CommandHandler():
             else:
                 print("[ERROR] Please set a query (use <query_id>)")
                 
+        elif command == "save query":
+            print("[INFO] The query you wan't to save: " + "")
+            
+            category = input("Enter the category for this query: ")
+            description = input("Enter a short description for this query: ")
+            textual_description = input("Enter a textual description for this query: ")
+            author = input("Enter your name as the author of this query: ")
+            
+            builded_query = self.context.dork_engine.build_query(self.context.query, param_only=True)
+            date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            
+            query = {
+                'category': category,
+                'short_description': description,
+                'textual_description': textual_description,
+                'query': builded_query,
+                'date': date,
+                'author': author
+            }
+            
+            self.insert_query(query)
+            
+            print("[~] Added query to the database")
+            
         elif command == "update query":
             self.context.database.update_queries()
             

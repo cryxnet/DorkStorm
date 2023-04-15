@@ -8,7 +8,7 @@ class DorkEngine:
     def __init__(self):
         pass
     
-    def build_query(self, query_context):
+    def build_query(self, query_context, param_only=False):
         """
         Function to build a query with the query context
         """
@@ -17,20 +17,21 @@ class DorkEngine:
         base_query_param = query_context["configs"]["base_query_params"]
         extra_query_param = query_context["configs"]["extra_query_params"]
         
-        query_params_string += base_query_param
+        if base_query_param:
+            query_params_string += base_query_param
         
         # customized query params building
         for param, value in extra_query_param.items():
             if value is not None and value != "":
-               query_params_string += f" {param}:{value}"
-        
-        encoded_query_params = urlencode({'q': query_params_string})
-        
-        google_search_url = f"https://www.google.com/search?{encoded_query_params}"
-        
-        query_context["builded_query"] = google_search_url
-        
-        return google_search_url
+               query_params_string += f'{param}:"{value}" '
+            
+        if param_only:
+            return query_params_string
+        else:
+            encoded_query_params = urlencode({'q': query_params_string})
+            google_search_url = f"https://www.google.com/search?{encoded_query_params}"
+            query_context["builded_query"] = google_search_url
+            return google_search_url
         
     def __random_user_agent(self):
         """
