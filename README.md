@@ -65,6 +65,7 @@ python dorkstorm.py
         use           Sets an base google dorks attack | use <dork_query_id>
         update query  Updates the query database | update query
         build query   Builds the query and outputs it | build query
+        save query    Saves the current query that is stored in context | save query
         execute       Executes the query | execute <flag> (--headless (--limit pages), --browser)
         pentest site  Execute all queries to a website | pentest site <domain>
 
