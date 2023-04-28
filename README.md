@@ -1,7 +1,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/cryxnet/dorkstorm">
-    <img src="assets/dorkstorm.png" alt="Logo" width="500" height="500">
+    <img src="assets/dorkstorm.png" alt="Logo" width="400" height="150">
   </a>
 
   <h3 align="center">DorkStorm</h3>
