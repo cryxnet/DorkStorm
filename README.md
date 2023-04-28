@@ -1,6 +1,22 @@
-# DorkStorm
+<br />
+<div align="center">
+  <a href="https://github.com/cryxnet/dorkstorm">
+    <img src="assets/dorkstorm.png" alt="Logo" width="500" height="500">
+  </a>
 
+  <h3 align="center">DorkStorm</h3>
+
+  <p align="center">
 DorkStorm is a powerful tool for hacking with Google dorks. DorkStorm allows security researchers, penetration testers, and ethical hackers to easily search and discover hidden information on the internet. By leveraging advanced Google search operators, DorkStorm can uncover vulnerabilities and sensitive data that may be exposed online, helping security professionals to identify potential attack vectors and assess the security posture of their targets. DorkStorm is designed to be customizable, allowing users to create their own dork queries and save them for future use. It also includes a number of built-in search templates for common use cases, such as finding vulnerable web applications or leaked passwords. DorkStorm is built with security in mind and takes care to protect user privacy and data confidentiality. It includes a range of safety features to ensure that users are not accidentally exposing sensitive information, such as blacklists for known malicious websites and automatic detection of potentially harmful queries. Whether you're a seasoned security professional or a beginner just starting out with Google dorks, DorkStorm is the perfect tool for hacking and discovering hidden information on the internet.
+    <br />
+    <a href="https://github.com/cryxnet/dorkstorm"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/cryxnet/dorkstorm/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/cryxnet/dorkstorm/issues">Request Feature</a>
+  </p>
+</div>
 
 ## Installation
 
