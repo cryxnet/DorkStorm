@@ -87,7 +87,7 @@ class DorkEngine:
         """
         
         page = 0
-        result_urls = []
+        results = []
         headers = {"Cookie": "CONSENT=YES+cb.20220404-01-p0.en-GB+FX+142", 
                    "user-agent": self.__random_user_agent(),
                    "referer": "https://www.google.com/"
@@ -102,7 +102,6 @@ class DorkEngine:
             if "Our systems have detected unusual traffic from your computer network.  This page checks to see if it's really you sending the requests, and not a robot." in soup.text:
                 raise Exception("Google detected suspicious traffic, bot protection detected you. Please try again later.")
             
-            results = []
             for g in soup.find_all('div', class_='g'):
                 anchors = g.find_all('a')
               
